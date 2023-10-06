@@ -1,9 +1,18 @@
 import tkinter as tk
 import random
 
+
 '''Devemos colocar aqui os arquivos para ler!'''
-palavras = ['cachorro', 'gato', 'elefante', 'girafa', 'hipopotamo']
-palavra_escolhida = random.choice(palavras)
+# palavras = ['cachorro', 'gato', 'elefante', 'girafa', 'hipopotamo']
+# palavra_escolhida = random.choice(palavras)
+
+def escolher_palavra_aleatoria():
+    global palavra_escolhida
+    with open('palavras.txt', 'r') as arquivo:
+        conteudo = arquivo.read()
+        palavras = conteudo.split(', ')
+        palavra_escolhida = random.choice(palavras)
+escolher_palavra_aleatoria() # --> escolhendo a palavra aleatoria
 
 # Função para verificar o palpite do usuário
 def verificar_palpite(palpite):
@@ -89,7 +98,7 @@ letras_erradas_label.pack(pady=20)
 def reiniciar_jogo():
     global palavra_escolhida, palpites, palpites_errados
     canvas.delete("boneco")  # Remove o boneco do canvas
-    palavra_escolhida = random.choice(palavras)  # Escolhe uma nova palavra
+    escolher_palavra_aleatoria()
     palpites = []  # Limpa os palpites
     palpites_errados = []  # Limpa os palpites errados
     palavra_var.set("_ " * len(palavra_escolhida))  # Reseta a palavra oculta
