@@ -1,13 +1,9 @@
 import tkinter as tk
 import random
-
+import lista_de_palavras
 def escolher_palavra_aleatoria():
     global palavra_escolhida
-    lista = ["advogado", "afta", "alambique", "alcachofra", "algarismo", "almanaque", "almofariz", "almoxarife", "alquimia", "altivez", "amendoim", "amplificar",
-"ampulheta", "ansioso", "aplaudir", "asterisco", "atlas", "balacobaco", "bandolim", "barulhento", "basquetebol", "beneficente", "berimbau", "bicarbonato",
-"bugiganga", "bumerangue", "burocracia", "caatinga", "caboclo", "cacareco", "cacto", "calibrado", "camuflagem", "candelabro",
-"cassetete", "catalisador", "catequizar", "cérebro", "chamariz", "cicatriz", "cleptomaníaco", "companhia", "condescender", "consciente", "crepúsculo", "cronologia", "deglutir", "depredar"]
-    palavra_escolhida = random.choice(lista)
+    palavra_escolhida = lista_de_palavras.palavra_aleatoria()
 escolher_palavra_aleatoria() # --> escolhendo a palavra aleatoria
 
 # Função para verificar o palpite do usuário
