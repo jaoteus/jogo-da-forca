@@ -1,17 +1,9 @@
 import tkinter as tk
 import random
-
-
-'''Devemos colocar aqui os arquivos para ler!'''
-# palavras = ['cachorro', 'gato', 'elefante', 'girafa', 'hipopotamo']
-# palavra_escolhida = random.choice(palavras)
-
+import lista_de_palavras
 def escolher_palavra_aleatoria():
     global palavra_escolhida
-    with open('palavras.txt', 'r') as arquivo:
-        conteudo = arquivo.read()
-        palavras = conteudo.split(', ')
-        palavra_escolhida = random.choice(palavras)
+    palavra_escolhida = lista_de_palavras.palavra_aleatoria()
 escolher_palavra_aleatoria() # --> escolhendo a palavra aleatoria
 
 # Função para verificar o palpite do usuário
@@ -35,6 +27,7 @@ def desenhar_boneco(erros):
 
 # Função para atualizar a palavra oculta
 def atualizar_palavra_oculta():
+    global palavra_escolhida
     palavra_oculta = ""
     for letra in palavra_escolhida:
         if letra in palpites:
@@ -45,6 +38,7 @@ def atualizar_palavra_oculta():
 
 # Função para verificar se o jogador ganhou ou perdeu
 def verificar_vitoria_derrota():
+    global palavra_escolhida
     if all(letra in palpites for letra in palavra_escolhida):
         palavra_var.set(f"A palavra era {palavra_escolhida}. Você ganhou!")
     elif len(palpites_errados) >= 6:
@@ -98,6 +92,7 @@ letras_erradas_label.pack(pady=20)
 def reiniciar_jogo():
     global palavra_escolhida, palpites, palpites_errados
     canvas.delete("boneco")  # Remove o boneco do canvas
+    # escolher_palavra_aleatoria()
     escolher_palavra_aleatoria()
     palpites = []  # Limpa os palpites
     palpites_errados = []  # Limpa os palpites errados
