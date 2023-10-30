@@ -48,6 +48,8 @@ def verificar_vitoria_derrota():
 # Cria a janela principal
 janela = tk.Tk()
 janela.title('Jogo da Forca')
+janela.geometry('600x600')
+janela.resizable(False, False)
 
 # Variáveis para controle
 palpites = []
