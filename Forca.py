@@ -1,6 +1,7 @@
 import tkinter as tk
 import random
 import lista_de_palavras
+
 def escolher_palavra_aleatoria():
     global palavra_escolhida
     palavra_escolhida = lista_de_palavras.palavra_aleatoria()
